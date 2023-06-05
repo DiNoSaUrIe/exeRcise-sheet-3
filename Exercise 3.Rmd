@@ -127,6 +127,15 @@ submittining the exercise sheet.
 - strenghts: easy teamwork, ability to go "back in time"
 - weaknesses: Not so easy to get into,  inconsistency between commands and arguments in the software
 
-## Exercise 2
+## Exercise 3
+-a)
+```{r}
+library(readr)
+vornamen_2021 <- read_csv("vornamen_2021.csv")
+View(vornamen_2021)
+open_data_portal_2022 <- read_csv("open_data_portal_2022.csv")
+View(open_data_portal_2022)
+```
+
 
 
