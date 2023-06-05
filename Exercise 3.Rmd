@@ -128,14 +128,23 @@ submittining the exercise sheet.
 - weaknesses: Not so easy to get into,  inconsistency between commands and arguments in the software
 
 ## Exercise 3
--a)
+-a/b)
 ```{r}
 library(readr)
+library(tidyverse)
 vornamen_2021 <- read_csv("vornamen_2021.csv")
 View(vornamen_2021)
 open_data_portal_2022 <- read_csv("open_data_portal_2022.csv")
 View(open_data_portal_2022)
+typeof(open_data_portal_2022$Anzahl)
+typeof(vornamen_2021$Anzahl)
 ```
+Anzahl ist als character gespeichert, da es die Anzahl "4 oder weniger" gibt.
+```{r}
 
+as.numeric(open_data_portal_2022$Anzahl)
+as.numeric(vornamen_2021$Anzahl)
 
+```
+Sämtliche Einträge unter "Anzahl" wurden zum Datentyp numeric konvertiert, was für sämtliche frühere "4 oder weniger" Einträge bedeutet, dass sie zu NAs wurden.
 
