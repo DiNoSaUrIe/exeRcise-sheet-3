@@ -134,15 +134,15 @@ library(readr)
 library(tidyverse)
 vornamen_2021 <- read_csv("vornamen_2021.csv")
 View(vornamen_2021)
-open_data_portal_2022 <- read_csv("open_data_portal_2022.csv")
-View(open_data_portal_2022)
-typeof(open_data_portal_2022$Anzahl)
+vornamen_2022 <- read_csv("open_data_portal_2022.csv")
+View(vornamen_2022)
+typeof(vornamen_2022$Anzahl)
 typeof(vornamen_2021$Anzahl)
 ```
 Anzahl ist als character gespeichert, da es die Anzahl "4 oder weniger" gibt.
 ```{r}
 
-as.numeric(open_data_portal_2022$Anzahl)
+as.numeric(vornamen_2022$Anzahl)
 as.numeric(vornamen_2021$Anzahl)
 
 
@@ -160,4 +160,46 @@ Sämtliche Einträge unter "Anzahl" wurden zum Datentyp numeric konvertiert, was
 sum(vornamen_2021$Anzahl)
 ```
 
+
+-c)
+```{r}
+vornamen_2021$Anzahl <- ifelse(vornamen_2021$Anzahl == "4 oder weniger", 2, vornamen_2021$Anzahl)
+```
+
+```{r}
+vornamen_2022$Anzahl <- ifelse(vornamen_2022$Anzahl == "4 oder weniger", 2, vornamen_2022$Anzahl)
+```
+
+```{r}
+vornamen_2021$Anzahl <- as.numeric(vornamen_2021$Anzahl)
+gesamtsumme_2021 <- sum(vornamen_2021$Anzahl)
+print(gesamtsumme_2021)
+```
+
+```{r}
+vornamen_2022$Anzahl <- as.numeric(vornamen_2022$Anzahl)
+gesamtsumme_2022 <- sum(vornamen_2022$Anzahl)
+print(gesamtsumme_2022)
+```
+
+-d)
+```{r}
+vornamen_2021$Jahr <- 2021
+vornamen_2022$Jahr <- 2022
+```
+
+-e)
+```{r}
+vornamen_combined <- bind_rows(vornamen_2021, vornamen_2022)
+```
+
+-f)
+```{r}
+beliebteste_namen <- vornamen_combined %>%
+  group_by(Vorname) %>%
+  summarize(Total_Anzahl = sum(Anzahl))
+beliebteste_namen <- beliebteste_namen %>%
+  arrange(desc(Total_Anzahl))
+print(beliebteste_namen$Vorname[1:10])
+```
 
