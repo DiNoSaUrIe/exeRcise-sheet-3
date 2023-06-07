@@ -190,3 +190,63 @@ beliebteste_namen <- beliebteste_namen %>%
 print(beliebteste_namen$Vorname[1:10])
 ```
 
+## Exercise 4
+
+-a)
+The correct code would be:
+
+```{r}
+# Create a sample data frame
+tax_data <- data.frame(
+  Name = c("Munich GmbH", "ABC Inc.", "Backpacks 1980", "Bavarian Circus"),
+  Tax_2019 = c(5000, 4000, 6000, 3500),
+  Tax_2020 = c(4800, 4200, 5800, 3700),
+  Tax_2021 = c(5200, 3800, 5900, 3400)
+)
+
+# Calculate column-wise means
+column_means <- lapply(tax_data[, -1], mean)
+column_means
+```
+
+```{r}
+# Calculate row-wise means
+row_means <- rowMeans(tax_data[, -1])
+
+# Add row-wise means as a new column to the tax_data data frame
+tax_data$Row_Mean <- row_means
+
+# Output the updated tax_data data frame
+print(tax_data)
+
+```
+
+-b)
+
+```{r}
+# Zuerst erstelle ich eine Beispiel-Liste
+Bsp_Liste <- list(
+  a = 1,
+  b = list(
+    c = 2,
+    d = list(
+      e = 3,
+      f = 4
+    )
+  )
+)
+
+# Dann erstelle ich eine Funktion zur Verdopplung der Werte, die ich mit rapply verwenden kann
+Mal_2 <- function(x) {
+  return(2 * x)
+}
+
+# Nun wende ich die Funktion auf meine Liste an
+result <- rapply(Bsp_Liste, Mal_2)
+
+# Ausgabe des Ergebnisses
+print(result)
+
+```
+
+Mit rapply kann man eine Funktion gleichzeitig auf alle Elemente einer Liste anwenden, wie man im oberen Beispiel erkennen kann.
