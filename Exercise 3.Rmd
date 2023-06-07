@@ -169,3 +169,24 @@ gesamtsumme_2022 <- sum(vornamen_2022$Anzahl)
 print(gesamtsumme_2022)
 ```
 
+-d)
+```{r}
+vornamen_2021$Jahr <- 2021
+vornamen_2022$Jahr <- 2022
+```
+
+-e)
+```{r}
+vornamen_combined <- bind_rows(vornamen_2021, vornamen_2022)
+```
+
+-f)
+```{r}
+beliebteste_namen <- vornamen_combined %>%
+  group_by(Vorname) %>%
+  summarize(Total_Anzahl = sum(Anzahl))
+beliebteste_namen <- beliebteste_namen %>%
+  arrange(desc(Total_Anzahl))
+print(beliebteste_namen$Vorname[1:10])
+```
+
