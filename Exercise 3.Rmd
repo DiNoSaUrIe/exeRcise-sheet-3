@@ -140,28 +140,7 @@ typeof(vornamen_2022$Anzahl)
 typeof(vornamen_2021$Anzahl)
 ```
 Anzahl ist als character gespeichert, da es die Anzahl "4 oder weniger" gibt.
-```{r}
 
-as.numeric(vornamen_2022$Anzahl)
-as.numeric(vornamen_2021$Anzahl)
-
-
-```
-
-```{r}
-is.na(vornamen_2021)
-```
-
-
-
-Sämtliche Einträge unter "Anzahl" wurden zum Datentyp numeric konvertiert, was für sämtliche frühere "4 oder weniger" Einträge bedeutet, dass sie zu NAs wurden.
--c)
-```{r}
-sum(vornamen_2021$Anzahl)
-```
-
-
--c)
 ```{r}
 vornamen_2021$Anzahl <- ifelse(vornamen_2021$Anzahl == "4 oder weniger", 2, vornamen_2021$Anzahl)
 ```
@@ -169,7 +148,10 @@ vornamen_2021$Anzahl <- ifelse(vornamen_2021$Anzahl == "4 oder weniger", 2, vorn
 ```{r}
 vornamen_2022$Anzahl <- ifelse(vornamen_2022$Anzahl == "4 oder weniger", 2, vornamen_2022$Anzahl)
 ```
+Wir haben statt 1,2,3,4 nun den mittleren Wert 2 genommen, um ungefähr die Wahrheit zu repräsentieren.
+Die genauen Werte gehen dabei verloren.
 
+-c)
 ```{r}
 vornamen_2021$Anzahl <- as.numeric(vornamen_2021$Anzahl)
 gesamtsumme_2021 <- sum(vornamen_2021$Anzahl)
