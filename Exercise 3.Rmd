@@ -145,6 +145,19 @@ Anzahl ist als character gespeichert, da es die Anzahl "4 oder weniger" gibt.
 as.numeric(open_data_portal_2022$Anzahl)
 as.numeric(vornamen_2021$Anzahl)
 
+
 ```
+
+```{r}
+is.na(vornamen_2021)
+```
+
+
+
 Sämtliche Einträge unter "Anzahl" wurden zum Datentyp numeric konvertiert, was für sämtliche frühere "4 oder weniger" Einträge bedeutet, dass sie zu NAs wurden.
+-c)
+```{r}
+sum(vornamen_2021$Anzahl)
+```
+
 
